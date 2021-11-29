@@ -112,10 +112,20 @@ public class ChooseAreaFragment extends Fragment {
             } else if (currentLevel == LEVEL_COUNTY) {
                 //点击县进入天气界面
                 String weatherId = mCountyList.get(position).getWeatherId();
-                Intent intent = new Intent(getActivity(), WeatherActivity.class);
-                intent.putExtra("weather_id", weatherId);
-                startActivity(intent);
-                Objects.requireNonNull(getActivity()).finish();
+                if (getActivity() instanceof MainActivity) {
+                    //如果在MainActivity中点击了，就跳转到天气信息界面
+                    Intent intent = new Intent(getActivity(), WeatherActivity.class);
+                    intent.putExtra("weather_id", weatherId);
+                    startActivity(intent);
+                    getActivity().finish();
+                } else if (getActivity() instanceof WeatherActivity) {
+                    // 如果在天气界面左侧滑动导航栏点击的，就关闭滑动菜单
+                    // 显示下拉刷新进度条，然后请求新城市的天气信息
+                    WeatherActivity activity = (WeatherActivity) getActivity();
+                    activity.drawerLayout.closeDrawers();
+                    activity.swipeRefresh.setRefreshing(true);
+                    activity.requestWeather(weatherId);
+                }
             }
         });
         // 返回按钮的点击事件

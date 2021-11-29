@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
@@ -14,6 +15,8 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.bumptech.glide.Glide;
@@ -31,10 +34,11 @@ import okhttp3.Response;
 
 public class WeatherActivity extends AppCompatActivity {
 
-    public SwipeRefreshLayout swipeRefresh;// 下拉刷新
 
-    //天气信息
-    private ScrollView weatherLayout;
+    //天气信息外框架
+    public DrawerLayout drawerLayout;
+    public SwipeRefreshLayout swipeRefresh;// 下拉刷新
+    private ScrollView weatherLayout;// 信息流
     //当前天气
     private TextView titleCity;
     private TextView titleUpdateTime;
@@ -50,6 +54,7 @@ public class WeatherActivity extends AppCompatActivity {
     private TextView carWashText;
     private TextView sportText;
     private ImageView bingPicImg;// 背景图片
+    private Button navButton;// 左侧导航提示按钮
 
     private String mWeatherId;// 当前城市对应的天气id，当前已显示天气，刷新时使用
 
@@ -77,6 +82,8 @@ public class WeatherActivity extends AppCompatActivity {
         sportText = findViewById(R.id.sport_text);
         bingPicImg = findViewById(R.id.bing_pic_img);
         swipeRefresh = findViewById(R.id.swipe_refresh);
+        drawerLayout = findViewById(R.id.drawer_layout);
+        navButton = findViewById(R.id.nav_button);
 
         //查询数据库
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
@@ -105,6 +112,9 @@ public class WeatherActivity extends AppCompatActivity {
         } else {
             loadBingPic();
         }
+
+        //左侧导航栏点击事件
+        navButton.setOnClickListener(v -> drawerLayout.openDrawer(GravityCompat.START));
     }
 
     /**
