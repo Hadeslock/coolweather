@@ -5,6 +5,14 @@
     android:layout_height="match_parent"
     android:background="@color/purple_500">
 
+    <!--背景图片-->
+    <ImageView
+        android:id="@+id/bing_pic_img"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop" />
+
+    <!--天气信息-->
     <ScrollView
         android:id="@+id/weather_layout"
         android:layout_width="match_parent"
@@ -15,7 +23,10 @@
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:fitsSystemWindows="true">
+            <!--fitsSystemWindows为状态栏留出空间，
+            避免设置全屏显示后和透明的状态栏重叠-->
 
             <include layout="@layout/title" />
 
