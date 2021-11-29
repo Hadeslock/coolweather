@@ -12,7 +12,7 @@ public class Country extends LitePalSupport {
 
     private int id;
 
-    private String countyName;
+    private String countryName;
 
     private String weatherId;
 
@@ -26,12 +26,12 @@ public class Country extends LitePalSupport {
         this.id = id;
     }
 
-    public String getCountyName() {
-        return countyName;
+    public String getCountryName() {
+        return countryName;
     }
 
-    public void setCountyName(String countyName) {
-        this.countyName = countyName;
+    public void setCountryName(String countryName) {
+        this.countryName = countryName;
     }
 
     public String getWeatherId() {
