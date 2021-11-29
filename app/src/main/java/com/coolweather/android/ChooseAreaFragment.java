@@ -1,6 +1,7 @@
 package com.coolweather.android;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -101,11 +102,20 @@ public class ChooseAreaFragment extends Fragment {
         // 地区列表每个子选项的点击事件
         listView.setOnItemClickListener((parent, view, position, id) -> {
             if (currentLevel == LEVEL_PROVINCE) {
+                //点击省进入市列表
                 selectedProvince = provinceList.get(position);
                 queryCities();
             } else if (currentLevel == LEVEL_CITY) {
+                //点击市进入县列表
                 selectedCity = cityList.get(position);
                 queryCounties();
+            } else if (currentLevel == LEVEL_COUNTY) {
+                //点击县进入天气界面
+                String weatherId = mCountyList.get(position).getWeatherId();
+                Intent intent = new Intent(getActivity(), WeatherActivity.class);
+                intent.putExtra("weather_id", weatherId);
+                startActivity(intent);
+                Objects.requireNonNull(getActivity()).finish();
             }
         });
         // 返回按钮的点击事件
