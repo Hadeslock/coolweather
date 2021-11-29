@@ -119,7 +119,7 @@ public class WeatherActivity extends AppCompatActivity {
         navButton.setOnClickListener(v -> drawerLayout.openDrawer(GravityCompat.START));
     }
 
-    /**
+    /*
      * 根据天气id请求城市天气信息
      * @author Hadeslock
      * @time 2021/11/29 17:31
@@ -174,7 +174,7 @@ public class WeatherActivity extends AppCompatActivity {
         loadBingPic();
     }
 
-    /**
+    /*
      * 处理并展示Weather实体类中的数据
      * @author Hadeslock
      * @time 2021/11/29 17:40
@@ -223,7 +223,7 @@ public class WeatherActivity extends AppCompatActivity {
         startService(intent);
     }
 
-    /**
+    /*
      * 加载必应每日一图
      * @author Hadeslock
      * @time 2021/11/29 18:35

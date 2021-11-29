@@ -45,7 +45,7 @@ public class AutoUpdateService extends Service {
         return super.onStartCommand(intent, flags, startId);
     }
 
-    /**
+    /*
      * 更新天气信息
      * @author Hadeslock
      * @time 2021/11/29 19:41
@@ -87,7 +87,7 @@ public class AutoUpdateService extends Service {
         }
     }
 
-    /**
+    /*
      * 更新必应每日一图
      * @author Hadeslock
      * @time 2021/11/29 19:41
