@@ -4,7 +4,7 @@ import android.text.TextUtils;
 
 import com.coolweather.android.db.City;
 import com.coolweather.android.db.Province;
-import com.coolweather.android.db.Country;
+import com.coolweather.android.db.County;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -72,8 +72,8 @@ public class Utility {
                 JSONArray allCounties = new JSONArray(response);
                 for (int i = 0; i < allCounties.length(); i++) {
                     JSONObject countyObject = allCounties.getJSONObject(i);
-                    Country county = new Country();
-                    county.setCountryName(countyObject.getString("name"));
+                    County county = new County();
+                    county.setCountyName(countyObject.getString("name"));
                     county.setWeatherId(countyObject.getString("weather_id"));
                     county.setCityId(cityId);
                     county.save();

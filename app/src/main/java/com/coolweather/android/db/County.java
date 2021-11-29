@@ -8,11 +8,11 @@ import org.litepal.crud.LitePalSupport;
  * Email: hadeslock@126.com
  * Desc:
  */
-public class Country extends LitePalSupport {
+public class County extends LitePalSupport {
 
     private int id;
 
-    private String countryName;
+    private String countyName;
 
     private String weatherId;
 
@@ -26,12 +26,12 @@ public class Country extends LitePalSupport {
         this.id = id;
     }
 
-    public String getCountryName() {
-        return countryName;
+    public String getCountyName() {
+        return countyName;
     }
 
-    public void setCountryName(String countryName) {
-        this.countryName = countryName;
+    public void setCountyName(String countyName) {
+        this.countyName = countyName;
     }
 
     public String getWeatherId() {
